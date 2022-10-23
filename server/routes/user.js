@@ -23,7 +23,7 @@ router.put("/:id", verifyTokenAndAuthorization, async (req, res) => {
       {
         $set: req.body,
       },
-      { new: true }
+      { new: true } //You should set the new option to true to return the document after update was applied.
     );
     res.status(200).json(updatedUser);
   } catch (err) {
