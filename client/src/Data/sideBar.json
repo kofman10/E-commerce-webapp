@@ -1,0 +1,63 @@
+[
+    {
+        "title": "Men",
+        "icon": "bi-gear-fill",
+        "childrens": [
+            {
+                "title": "clothing",
+                "icon": "bi-house-fill",
+                "path": "/"
+            },
+            {
+                "title": "footwear",
+                "icon": "bi-info-circle-fill",
+                "path": "/about"
+            },
+            {
+                "title": "collection",
+                "icon": "bi-info-circle-fill",
+                "path": "/about"
+            }
+          
+          
+        ]
+    },
+    {
+        "title": "Women",
+        "icon": "bi-info-circle-fill",
+        "childrens": [
+            {
+                "title": "clothing",
+                "path": "/login"
+            },
+            {
+                "title": "footwear",
+                "path": "/register"
+            },
+            {
+                "title": "collection",
+                "path": "/forgot-password"
+            }
+          
+        ]
+    },
+    {
+        "title": "Collection",
+        "icon": "bi-person-fill",
+        "childrens": [
+            {
+                "title": "Nike",
+                "path": "/profile"
+            },
+            {
+                "title": "Addidas",
+                "path" : "/"
+            },
+            {
+                "title": "Off-white",
+                "path": "/logout"
+            }
+        ]
+    }
+  
+]
