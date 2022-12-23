@@ -1,17 +1,8 @@
 import React from "react";
 import { useState } from 'react';
 
-function Counter() {
+function Counter({quantity, handleQuantity}) {
 
-    const [quantity, setQuantity] = useState(1);
-
-     const handleQuantity = (type) => {
-    if (type === "dec") {
-      quantity > 1 && setQuantity(quantity - 1);
-    } else {
-      quantity < 13 && setQuantity(quantity + 1);
-    }
-  };
 
   return (
     <div>

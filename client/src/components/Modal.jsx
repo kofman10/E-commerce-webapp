@@ -11,7 +11,7 @@ import { Icon } from '@iconify/react';
   }
 
 
-  return (<> { visible &&
+  return (<> { visible && 
     <div id="container" onClick={onCloseHandler} className="fixed z-10 inset-0 bg-black bg-opacity-25 backdrop-blur-sm flex items-center justify-center">
       <div className="bg-white p-2 pb-6 w-full">
       <div onClick={onClose} className = "flex justify-end mr-2 pb-6 text-2xl"><Icon icon="bi:x-lg" /></div>

@@ -4,6 +4,7 @@ import Hamburger from 'hamburger-react'
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import Sidebar from './Sidebar/Sidebar'
+import { useSelector } from "react-redux";
 
 const NavBar = () => {
 
@@ -14,7 +15,8 @@ const NavBar = () => {
     setOpen(true)
       
   }
-
+  const quantity = useSelector(state=>state.cart.quantity)
+ 
   return (
     <>
     <div className='z-10 fixed bg-white w-full'> 
@@ -34,7 +36,7 @@ const NavBar = () => {
  <a href = '/Cart'>
  <ShoppingCartOutlined  sx={{
     fontSize: 25 ,
-  }} />0 
+  }} /> {quantity} 
   </a >
   </div>
      </div>

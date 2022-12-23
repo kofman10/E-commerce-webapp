@@ -1,11 +1,11 @@
 import React from 'react'
 import NavBar from '../components/NavBar'
 import Footer from '../components/Footer'
-import converse from '../assets/converse.jpeg'
 import { useLocation } from "react-router";
 import { publicRequest } from "../requestMethod";
 import { useEffect, useState } from "react";
-
+import { addProduct } from "../redux/cartRedux";
+import { useDispatch } from "react-redux";
 import Counter from '../components/Counter'
 
 
@@ -14,16 +14,35 @@ const ProductPage = () => {
   const location = useLocation()
   const id = location.pathname.split('/')[2]
   const [product, setProduct] = useState({});
+  const dispatch = useDispatch()
+
+    const [quantity, setQuantity] = useState(1);
+
+     const handleQuantity = (type) => {
+    if (type === "dec") {
+      quantity > 1 && setQuantity(quantity - 1);
+    } else {
+      quantity < 13 && setQuantity(quantity + 1);
+    }
+  };
+   
 
   useEffect(() => {
     const getProduct = async () => {
       try {
         const res = await publicRequest.get("/products/find/" + id);
         setProduct(res.data);
+        console.log(res.data)
       } catch {}
     };
     getProduct();
   }, [id]);
+
+   const handleClick = () => {
+    dispatch(
+      addProduct( {...product, quantity} )
+    )
+   }
 
 
   return (
@@ -60,12 +79,14 @@ const ProductPage = () => {
                 <option>XXL</option>
               </select>
             </div>
+
             <div className="mt-7">
-              <Counter />
+              <Counter quantity = {quantity} handleQuantity = {handleQuantity} />
             </div>
+
           </div>
 
-          <button className="text-black bg-gray-200 rounded-md shadow-md mt-[30px] p-3">
+          <button onClick={handleClick} className="text-black bg-gray-200 rounded-md shadow-md mt-[30px] p-3">
             Add to Cart
           </button>
 
@@ -82,3 +103,6 @@ const ProductPage = () => {
 }
 
 export default ProductPage
+
+
+//In react-redux the useDispatch hook gives us access to our store's dispatch method. Dispatch is used to send actions into our redux store and is the only way we can affect the store from within a component.

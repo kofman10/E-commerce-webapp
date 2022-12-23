@@ -1,4 +1,5 @@
 import React from 'react'
+import { useSelector } from "react-redux";
 import { Icon } from '@iconify/react';
 import NavBar from '../components/NavBar'
 import Counter from '../components/Counter'
@@ -6,14 +7,27 @@ import Footer from '../components/Footer'
 import offwhiteshoes from '../assets/offwhiteshoes.jpeg'
 import nikeshoe from '../assets/nikeshoe.jpeg'
 import nikezoomx from '../assets/nikezoomx.jpeg'
+import { useState } from 'react'
 
 const Cart = () => {
 
     const SummaryItemStyle = "SummaryItem flex justify-between mt-3 w-[100%]";
   const ProductDivStyle = "flex w-[100%] h-auto items-center flex-col";
   
+  const cart = useSelector((state) => state.cart);
+
+      const [quantity, setQuantity] = useState(1);
+
+     const handleQuantity = (type) => {
+    if (type === "dec") {
+      quantity > 1 && setQuantity(quantity - 1);
+    } else {
+      quantity < 13 && setQuantity(quantity + 1);
+    }
+  };
 
   return (
+   
     <>
     <div>
         <NavBar />
@@ -56,7 +70,9 @@ const Cart = () => {
               {/*Price and Quantity Div*/}            
             </div>
             <div className='ml-5 mt-3'> 
-            <Counter />
+
+            <Counter quantity = {quantity} handleQuantity = {handleQuantity} />
+            
                 <p className='mt-5 mb-2 text-lg'> Price : 70$</p>
             </div>
 
